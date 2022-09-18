@@ -2,9 +2,11 @@ import { ImageSourcePropType, TouchableOpacityProps } from "react-native";
 
 export interface GameCardProps {
   id: string;
-  name: string;
-  ads: string;
-  cover: ImageSourcePropType;
+  title: string;
+  _count: {
+    ads: number;
+  };
+  bannerUrl: string;
 }
 
 export interface Props extends TouchableOpacityProps {
