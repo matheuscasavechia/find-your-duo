@@ -1,4 +1,5 @@
-import { TouchableOpacity, View } from "react-native";
+import { GameController } from "phosphor-react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { THEME } from "../../../../theme";
 import { DuoCardLabel } from "../DuoCardLabel";
 
@@ -12,6 +13,7 @@ export const Layout = ({
   hourStart,
   hourEnd,
   useVoiceChannel,
+  onConnect,
 }: IDuoCardPros): JSX.Element => {
   return (
     <View style={styles.container}>
@@ -26,7 +28,10 @@ export const Layout = ({
         value={useVoiceChannel ? "Sim" : "Não"}
         colorValue={useVoiceChannel ? THEME.COLORS.SUCCESS : THEME.COLORS.ALERT}
       />
-      {/* <TouchableOpacity style={styled.button}></TouchableOpacity> */}
+      <TouchableOpacity style={styles.button} onPress={onConnect}>
+        <GameController color={THEME.COLORS.TEXT} size={20} />
+        <Text style={styles.buttonTitle}>Conectar</Text>
+      </TouchableOpacity>
     </View>
   );
 };

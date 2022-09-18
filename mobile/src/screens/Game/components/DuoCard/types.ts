@@ -6,4 +6,5 @@ export interface IDuoCardPros {
   hourEnd: string;
   hourStart: string;
   useVoiceChannel: boolean;
+  onConnect: () => void;
 }

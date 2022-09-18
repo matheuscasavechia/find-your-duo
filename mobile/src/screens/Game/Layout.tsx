@@ -49,9 +49,9 @@ export const Layout = ({}: IDuoCardPros): JSX.Element => {
         />
         <Heading title={game.title} subtitle="Conecte-se e comece a jogar!" />
         <FlatList
+          data={duos}
           showsHorizontalScrollIndicator={false}
           horizontal
-          data={duos}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <DuoCard
@@ -62,8 +62,11 @@ export const Layout = ({}: IDuoCardPros): JSX.Element => {
               hourStart={item.hourStart}
               hourEnd={item.hourEnd}
               useVoiceChannel={item.useVoiceChannel}
+              onConnect={() => {}}
             />
           )}
+          style={styles.containerList}
+          contentContainerStyle={styles.contentList}
         />
       </SafeAreaView>
     </Background>
