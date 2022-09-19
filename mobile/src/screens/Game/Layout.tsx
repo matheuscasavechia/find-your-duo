@@ -12,12 +12,20 @@ import { Heading } from "../../components/Heading";
 import { useCallback, useEffect, useState } from "react";
 import { DuoCard } from "./components/DuoCard";
 import { IDuoCardPros } from "./components/DuoCard/types";
+import { DuoMatch } from "./components/DuoMatch";
 
 export const Layout = ({}: IDuoCardPros): JSX.Element => {
   const [duos, setDuos] = useState<IDuoCardPros[]>([]);
+  const [discordDuoSelected, setDiscordDuoSelected] = useState("");
   const navigation = useNavigation();
   const route = useRoute();
   const game = route.params as GameParams;
+
+  async function getDiscordUser(adsId: string) {
+    fetch(`http://localhost:3333/ads/${adsId}/discord`)
+      .then((response) => response.json())
+      .then((data) => setDiscordDuoSelected(data.discord));
+  }
 
   useEffect(() => {
     fetch(`http://localhost:3333/games/${game.id}/ads`)
@@ -28,6 +36,7 @@ export const Layout = ({}: IDuoCardPros): JSX.Element => {
   const handleGoback = useCallback(() => {
     navigation.goBack();
   }, []);
+
   return (
     <Background>
       <SafeAreaView style={styles.container}>
@@ -62,7 +71,9 @@ export const Layout = ({}: IDuoCardPros): JSX.Element => {
               hourStart={item.hourStart}
               hourEnd={item.hourEnd}
               useVoiceChannel={item.useVoiceChannel}
-              onConnect={() => {}}
+              onConnect={() => {
+                getDiscordUser(item.id);
+              }}
             />
           )}
           style={styles.containerList}
@@ -76,6 +87,11 @@ export const Layout = ({}: IDuoCardPros): JSX.Element => {
           )}
         />
       </SafeAreaView>
+      <DuoMatch
+        closeIcon={() => setDiscordDuoSelected("")}
+        visible={discordDuoSelected.length > 0}
+        discord={discordDuoSelected}
+      />
     </Background>
   );
 };
