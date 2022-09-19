@@ -10,7 +10,7 @@ export const Layout = ({ data, ...rest }: Props): JSX.Element => {
       <ImageBackground style={styles.cover} source={{ uri: data.bannerUrl }}>
         <LinearGradient colors={THEME.COLORS.FOOTER} style={styles.footer}>
           <Text style={styles.name}>{data.title}</Text>
-          <Text style={styles.ads}>{data._count.ads} anúncios</Text>
+          <Text style={styles.ads}>{data._count.ads} anúncio(s)</Text>
         </LinearGradient>
       </ImageBackground>
     </TouchableOpacity>

@@ -6,14 +6,15 @@ import { CreateAdBanner } from "./Components/CreateAdBanner";
 import { useEffect, useState } from "react";
 import { Game } from "./types";
 import { AnnoucimentForm } from "./Components/AnnouncementForm";
+import axios from "axios";
 
 function App() {
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3333/games")
-      .then((response) => response.json())
-      .then((data) => setGames(data));
+    axios("http://localhost:3333/games").then((response) =>
+      setGames(response.data)
+    );
   }, []);
 
   return (

@@ -20,7 +20,7 @@ export const Layout = ({}: IDuoCardPros): JSX.Element => {
   const game = route.params as GameParams;
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:3333/games/${game.id}/ads`)
+    fetch(`http://localhost:3333/games/${game.id}/ads`)
       .then((response) => response.json())
       .then((data) => setDuos(data));
   }, []);
