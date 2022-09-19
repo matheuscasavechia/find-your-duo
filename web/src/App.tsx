@@ -8,6 +8,9 @@ import { Game } from "./types";
 import { AnnoucimentForm } from "./Components/AnnouncementForm";
 import axios from "axios";
 
+// keen-slider para fazer carrocel para varios games
+// fazer validação do formulario usar o reactHookForm
+// fazer tela de login para conseguir logar com o discord ou twitch
 function App() {
   const [games, setGames] = useState<Game[]>([]);
 

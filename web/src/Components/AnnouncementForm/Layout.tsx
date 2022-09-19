@@ -6,6 +6,11 @@ import { AnnoucementInput } from "./components/AnnoucementInput";
 import { FormEvent, useCallback, useEffect, useState } from "react";
 import { Game } from "../../types";
 import axios from "axios";
+//TODO! tirar toda a logica do layout e passar para o controller
+
+// keen-slider para fazer carrocel para varios games
+// fazer validação do formulario usar o reactHookForm
+// fazer tela de login para conseguir logar com o discord ou twitch
 
 export const Layout = (): JSX.Element => {
   const [games, setGames] = useState<Game[]>([]);
@@ -34,7 +39,7 @@ export const Layout = (): JSX.Element => {
         discord: data.discord,
         weekDays: weekDays.map(Number),
         hourStart: data.hourStart,
-        hourEnd: data.hourStart,
+        hourEnd: data.hourEnd,
         useVoiceChannel: useVoiceChannel,
       });
       alert("Anúncio criado com sucesso!");
